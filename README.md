@@ -48,6 +48,11 @@ pip install -r requirements.txt
 ## Estrutura do Banco
 O banco tem, no total, 6 tabelas: ```usuarios``` onde estão armazenados as URLs dos perfis juntamente com um ID para cada URL (ou perfil); ```linguas``` que armazena as informações de idioma e nível para cada idioma de cada perfil (a coluna de ```id_pessoa``` referencia a coluna de ID de ```usuarios```); ```competencias``` e ```interesses``` que armazenam, respectivamente, as competências e interesses associados a cada perfil onde, novamente, a coluna de ```id_pessoa``` de cada uma referencia a coluna de ID de ```usuarios```; e ```experiencias``` onde ficam armazenadas as informações das experiências de cada perfil. Essa tabela tem como colunas o cargo relacionado a cada experiência e suas datas de começo e fim, além de ter a coluna de ```id_pessoa``` que referencia a coluna de ID de ```usuarios```.
 
+## Dificuldades
+As maiores dificuldades encontradas nesse projeto dizem respeito a mineração dos dados. Tanto para iniciar a buscar por perfis de pessoas de João Pessoa, quanto para obter a URL de cada perfil e avançar na página de resultados da busca para encontrar mais perfis. Mesmo o LinkedIn afirmando haver cerca de 240.000 resultados na busca, só eram disponibilizadas 100 páginas de resultados. O algortimo criado conseguiu identificar 988 perfis diferentes entre essas 100 páginas. Além disso houve uma enorme dificuldade em minerar os dados específicos de idiomas, competências, interesses e experiências para **cada** perfil. Isso porque depois de acessar cerca de 150 perfis buscando esses dados, a plataforma proibiu meu acesso, impedindo que eu conseguisses os dados relativos aos 988 perfis selecionados. Por mais que tenha tinha uma pequena fração da quantidade de perfis desejadas, eu acredito que isso não alterou **significativamente** o resultado final. Como as análises têm seus alicerces na estatística, a tendência que a amostra segue já é visível nos dados minerados. A expectativa é que, utilizando os 988 perfis selecionados, os resultados ainda ficassem com a mesma estrutura.
+
+## Resultados
+
 
 
 
