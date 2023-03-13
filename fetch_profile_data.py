@@ -37,10 +37,10 @@ time.sleep(1)
 
 db = create_connection(DATABASE_PATH)
 
-SLEEP_TIME = 3
+SLEEP_TIME = 5
 
 # for user_url, user_idioma, user_comp, user_inter, user_exp in zip(usuarios_url, usuarios_idioma, usuarios_competencia, usuarios_interesse, usuarios_experiencia):
-INICIO = 154
+INICIO = 156
 FIM = 1000
 for user_url, user_idioma, user_comp, user_inter, user_exp in zip(
     usuarios_url[INICIO:FIM],
