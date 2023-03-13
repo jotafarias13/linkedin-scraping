@@ -45,6 +45,9 @@ pip install -r requirements.txt
 
 6. Executar o arquivo ```graphs.py``` para que os gráficos sejam gerados. Eles serão colocados no diretório ```graphs```.
 
+## Estrutura do Banco
+O banco tem, no total, 6 tabelas: ```usuarios``` onde estão armazenados as URLs dos perfis juntamente com um ID para cada URL (ou perfil); ```linguas``` que armazena as informações de idioma e nível para cada idioma de cada perfil (a coluna de ```id_pessoa``` referencia a coluna de ID de ```usuarios```); ```competencias``` e ```interesses``` que armazenam, respectivamente, as competências e interesses associados a cada perfil onde, novamente, a coluna de ```id_pessoa``` de cada uma referencia a coluna de ID de ```usuarios```; e ```experiencias``` onde ficam armazenadas as informações das experiências de cada perfil. Essa tabela tem como colunas o cargo relacionado a cada experiência e suas datas de começo e fim, além de ter a coluna de ```id_pessoa``` que referencia a coluna de ID de ```usuarios```.
+
 
 
 
