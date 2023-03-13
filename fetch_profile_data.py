@@ -37,40 +37,43 @@ time.sleep(1)
 
 db = create_connection(DATABASE_PATH)
 
+SLEEP_TIME = 3
+
 # for user_url, user_idioma, user_comp, user_inter, user_exp in zip(usuarios_url, usuarios_idioma, usuarios_competencia, usuarios_interesse, usuarios_experiencia):
-TOTAL = 100
+INICIO = 154
+FIM = 1000
 for user_url, user_idioma, user_comp, user_inter, user_exp in zip(
-    usuarios_url[:TOTAL],
-    usuarios_idioma[:TOTAL],
-    usuarios_competencia[:TOTAL],
-    usuarios_interesse[:TOTAL],
-    usuarios_experiencia[:TOTAL],
+    usuarios_url[INICIO:FIM],
+    usuarios_idioma[INICIO:FIM],
+    usuarios_competencia[INICIO:FIM],
+    usuarios_interesse[INICIO:FIM],
+    usuarios_experiencia[INICIO:FIM],
 ):
     id_usuario = get_id_usuario(db, user_url)
 
     driver.get(user_idioma)
-    time.sleep(2)
+    time.sleep(SLEEP_TIME)
     content = driver.page_source
     langs_names_levels = get_idiomas_from_usuario(content)
     if langs_names_levels is not None:
         insert_idioma(db, langs_names_levels, id_usuario)
 
     driver.get(user_comp)
-    time.sleep(2)
+    time.sleep(SLEEP_TIME)
     content = driver.page_source
     competencias = get_competencias_from_usuario(content)
     if competencias is not None:
         insert_competencia(db, competencias, id_usuario)
 
     driver.get(user_inter)
-    time.sleep(2)
+    time.sleep(SLEEP_TIME)
     content = driver.page_source
     interesses = get_interesses_from_usuario(content)
     if interesses is not None:
         insert_interesses(db, interesses, id_usuario)
 
     driver.get(user_exp)
-    time.sleep(2)
+    time.sleep(SLEEP_TIME)
     content = driver.page_source
     experiencias = get_experiencias_from_usuario(content)
     if experiencias is not None:
