@@ -228,7 +228,10 @@ def convert_str_data(data: str) -> tuple[str, str]:
     end = data_range.split("-")[1].strip()
 
     begin_ano = begin[-4:]
-    begin_mes = mes[begin[:3]]
+    if begin.startswith("1") or begin.startswith("2"):
+        begin_mes = "01"
+    else:
+        begin_mes = mes[begin[:3]]
     begin_dia = "01"
     begin_clean = begin_ano + "-" + begin_mes + "-" + begin_dia
 
@@ -236,7 +239,10 @@ def convert_str_data(data: str) -> tuple[str, str]:
         end_clean = "atualmente"
     else:
         end_ano = end[-4:]
-        end_mes = mes[end[:3]]
+        if end.startswith("1") or end.startswith("2"):
+            end_mes = "01"
+        else:
+            end_mes = mes[end[:3]]
         end_dia = "01"
         end_clean = end_ano + "-" + end_mes + "-" + end_dia
 
