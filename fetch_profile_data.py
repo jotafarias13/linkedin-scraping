@@ -1,3 +1,15 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""fetch_profile_data.py: minera dados desejados dos perfis e coloca no banco.
+
+Minera os dados de idiomas, competências, interesses e experiências dos perfis
+selecionados. Essas informações são adicionadas ao banco a medida que são
+mineradas.
+
+"""
+
+
 import time
 
 from utils import (
@@ -39,7 +51,6 @@ db = create_connection(DATABASE_PATH)
 
 SLEEP_TIME = 5
 
-# for user_url, user_idioma, user_comp, user_inter, user_exp in zip(usuarios_url, usuarios_idioma, usuarios_competencia, usuarios_interesse, usuarios_experiencia):
 INICIO = 156
 FIM = 1000
 for user_url, user_idioma, user_comp, user_inter, user_exp in zip(

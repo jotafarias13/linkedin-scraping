@@ -5,7 +5,7 @@ import pandas as pd
 
 from utils import DATABASE_PATH, create_connection
 
-NUM_PESSOAS = 153
+NUM_PESSOAS = 156
 style.use("fivethirtyeight")
 
 db = create_connection(DATABASE_PATH)

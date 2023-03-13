@@ -1,3 +1,14 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""create_db.py: cria o banco de dados com suas tabelas, colunas e relações.
+
+Utilizando sqlite3, o código abaixo cria um banco de dados em sqlite3 com
+as tabelas e suas relações.
+
+"""
+
+
 from utils import DATABASE_PATH, create_connection, execute_query
 
 create_usuarios_table = """

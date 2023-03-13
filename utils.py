@@ -10,10 +10,23 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 from config import LINKEDIN_LOGIN, LINKEDIN_PASSWORD
 
-DATABASE_PATH = "linkedin_scraping.sqlite3"
+DATABASE_PATH = "db/linkedin_scraping.sqlite3"
 
 
 def create_connection(path_to_file: str) -> sqlite3.Connection:
+    """Cria conexão com o banco.
+
+    Parameters
+    ----------
+    path_to_file : str
+        Caminho para o arquivo de database
+
+    Returns
+    -------
+    sqlite3.Connection
+        Conexão sqlite3
+
+    """
     connection = None
 
     try:
@@ -26,6 +39,19 @@ def create_connection(path_to_file: str) -> sqlite3.Connection:
 
 
 def execute_query(connection: sqlite3.Connection, query: str) -> None:
+    """Executa uma query no banco de dados.
+
+    A query deve ser do tipo que não gera retorno, ou seja, somente ações
+    de criar e modificar tabelas.
+
+    Parameters
+    ----------
+    connection : sqlite3.Connection
+        Conexão sqlite3
+    query : str
+        String com query
+
+    """
     cursor = connection.cursor()
 
     try:
@@ -38,6 +64,23 @@ def execute_query(connection: sqlite3.Connection, query: str) -> None:
 def execute_query_return(
     connection: sqlite3.Connection, query: str
 ) -> list[tuple]:
+    """Executa uma query e retorna o seu resultado.
+
+    Voltada para queries que tem retorno (SELECT).
+
+    Parameters
+    ----------
+    connection : sqlite3.Connection
+        Conexão sqlite3
+    query : str
+        String com query
+
+    Returns
+    -------
+    list[tuple]
+        Resultado da query
+
+    """
     cursor = connection.cursor()
     result = None
 
@@ -53,6 +96,18 @@ def execute_query_return(
 def populate_usuarios_table(
     connection: sqlite3.Connection, profile_urls: list
 ) -> None:
+    """Popula a tabela de usuarios.
+
+    Utiliza os links de perfis minerados e popula a tabela de usuarios.
+
+    Parameters
+    ----------
+    connection : sqlite3.Connection
+        Conexão sqlite3
+    profile_urls : list
+        URLs dos perfis minerados
+
+    """
     for pu in profile_urls:
         insert_usuario = f"""
         INSERT INTO
@@ -64,6 +119,14 @@ def populate_usuarios_table(
 
 
 def create_driver() -> webdriver.Chrome:
+    """Cria driver para utilização do webdriver.
+
+    Returns
+    -------
+    webdriver.Chrome
+        Instância de da classe webdriver.Chrome (um driver)
+
+    """
     service = ChromeService(executable_path=ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service)
     return driver
@@ -73,6 +136,21 @@ LINKEDIN_URL = "https://www.linkedin.com/"
 
 
 def linkedin_login(driver: webdriver.Chrome) -> webdriver.Chrome:
+    """Realiza login no linkedin.
+
+    Utiliza as credenciais e o driver para ter acesso ao perfil do linkedin.
+
+    Parameters
+    ----------
+    driver : webdriver.Chrome
+        Instância de driver
+
+    Returns
+    -------
+    webdriver.Chrome
+        Instância de driver
+
+    """
     driver.get(LINKEDIN_URL)
 
     time.sleep(1)
@@ -93,6 +171,23 @@ NO_CONTENT = "Nada para ver por enquanto"
 
 
 def get_id_usuario(connection: sqlite3.Connection, user_url: str) -> int:
+    """Retorna ID de um usuario.
+
+    Faz uma query no banco para retornar um ID baseado numa URL.
+
+    Parameters
+    ----------
+    connection : sqlite3.Connection
+        Conexão sqlite3
+    user_url : str
+        URL de um perfil
+
+    Returns
+    -------
+    int
+        ID do usuário
+
+    """
     select_usuario_id = f"""
     SELECT id
     FROM usuarios
@@ -104,6 +199,19 @@ def get_id_usuario(connection: sqlite3.Connection, user_url: str) -> int:
 
 
 def get_idiomas_from_usuario(content: str) -> dict[str, str]:
+    """Retorna idiomas de um usuário
+
+    Parameters
+    ----------
+    content : str
+        Conteúdo html da página
+
+    Returns
+    -------
+    dict[str, str]
+        Idioma e nível de fluência
+
+    """
     if NO_CONTENT in content:
         return None
 
@@ -127,6 +235,18 @@ def insert_idioma(
     langs_names_levels: dict[str, str],
     id_usuario: int,
 ) -> None:
+    """Insere o idioma do usuário no banco de dados.
+
+    Parameters
+    ----------
+    connection : sqlite3.Connection
+        Conexão sqlite3
+    langs_names_levels : dict[str, str]
+        Idioma e nível de fluência do usuário
+    id_usuario : int
+        ID do usuário
+
+    """
     for name, level in langs_names_levels.items():
         insert_idioma = f"""
         INSERT INTO
@@ -140,6 +260,19 @@ def insert_idioma(
 
 
 def get_competencias_from_usuario(content: str) -> list[str]:
+    """Retorna competências de um usuário
+
+    Parameters
+    ----------
+    content : str
+        Conteúdo html da página
+
+    Returns
+    -------
+    list[ str]
+        Competências do usuário
+
+    """
     if NO_CONTENT in content:
         return None
 
@@ -160,6 +293,18 @@ def insert_competencia(
     competencias: list[str],
     id_usuario: int,
 ) -> None:
+    """Insere a competência do usuário no banco de dados.
+
+    Parameters
+    ----------
+    connection : sqlite3.Connection
+        Conexão sqlite3
+    competencias: list[str]
+        Competências do usuário
+    id_usuario : int
+        ID do usuário
+
+    """
     for comp in competencias:
         insert_competencia = f"""
         INSERT INTO
@@ -173,6 +318,19 @@ def insert_competencia(
 
 
 def get_interesses_from_usuario(content: str) -> list[str]:
+    """Retorna interesses de um usuário
+
+    Parameters
+    ----------
+    content : str
+        Conteúdo html da página
+
+    Returns
+    -------
+    list[str]
+        Interesses do usuário
+
+    """
     if NO_CONTENT in content:
         return None
 
@@ -195,6 +353,18 @@ def insert_interesses(
     interesses: list[str],
     id_usuario: int,
 ) -> None:
+    """Insere os interesses do usuário no banco de dados.
+
+    Parameters
+    ----------
+    connection : sqlite3.Connection
+        Conexão sqlite3
+    interesses: list[str]
+        Interesses do usuário
+    id_usuario : int
+        ID do usuário
+
+    """
     for inter in interesses:
         insert_interesse = f"""
         INSERT INTO
@@ -208,6 +378,22 @@ def insert_interesses(
 
 
 def convert_str_data(data: str) -> tuple[str, str]:
+    """Converte uma string de data de cargo para um formato de data padrão.
+
+    Converte a data que o linkedin mostra nos cargos dos usuário em um formato
+    padrão que pode ser usado no código.
+
+    Parameters
+    ----------
+    data : str
+        String com data do cargo
+
+    Returns
+    -------
+    tuple[str, str]
+        Data de começo e data de fim do cargo
+
+    """
     mes = {
         "jan": "01",
         "fev": "02",
@@ -250,6 +436,19 @@ def convert_str_data(data: str) -> tuple[str, str]:
 
 
 def get_experiencias_from_usuario(content: str) -> dict[str, tuple]:
+    """Retorna experiencias de um usuário
+
+    Parameters
+    ----------
+    content : str
+        Conteúdo html da página
+
+    Returns
+    -------
+    dict[str, tuple]
+        Cargo e sua data de ínicio e término de um usuário
+
+    """
     if NO_CONTENT in content:
         return None
 
@@ -283,6 +482,18 @@ def insert_experiencia(
     experiencias: dict[str, tuple],
     id_usuario: int,
 ) -> None:
+    """Insere as experiências do usuário no banco de dados.
+
+    Parameters
+    ----------
+    connection : sqlite3.Connection
+        Conexão sqlite3
+    experiencias: dict[str, tuple]
+        Cargo e sua data de ínicio e término de um usuário
+    id_usuario : int
+        ID do usuário
+
+    """
     for cargo, data in experiencias.items():
         insert_experiencia = f"""
         INSERT INTO

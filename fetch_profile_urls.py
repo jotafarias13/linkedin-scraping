@@ -1,3 +1,14 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""fetch_profile_data.py: minera as URLs de perfis e cria a tabela de usuários.
+
+Utiliza as biblioteca BeatifulSoup e Selenium para encontrar os perfis
+desejados e minera as URLs, criando a tabela de usuários.
+
+"""
+
+
 import time
 
 from bs4 import BeautifulSoup
