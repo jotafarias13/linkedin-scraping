@@ -13,10 +13,8 @@ As bibliotecas necessárias para executar esse projeto são:
 - [matplotlib](https://matplotlib.org/stable/index.html)
 - [pandas](https://pandas.pydata.org/docs/)
 
+A biblioteca *sqlite3* foi utilizada para comunicação com o banco de dados, desde sua criação até sua manipulação. A biblioteca *selenium* em conjunto com *webdriver_manager* foram utilizadas para conseguir acesso ao perfil do LinkedIn e navegar pela página, fazendo pesquisas e minerando os dados. O *webdriver_manager* possibilita a instalação de um driver de browser (neste projeto foi utilizado o Chrome) para que a *selenium* consiga navegar. A biblioteca *time* foi usada nesse mesmo contexto, visto que é necessário esperar um tempo até que a página carregue por completo para que o HTML seja baixado por completo. A própria biblioteca *selenium* tem essa [funcionalidade](https://www.selenium.dev/documentation/webdriver/waits/), porém, não houve tempo hábil para que isso fosse implementado da maneira mais adequada e a biblioteca *time* foi escolhida para que o tempo fosse investido em outras partes do projeto. Por fim, as bibliotecas *matplotlib* e *pandas* foram usadas para gerar os gráficos que resumem os dados minerados neste projeto.
 
 
 
-## Outros
-bib time não era necessária, tem como implementar pelo selenium mas faltou tempo.
 
-Os imports para realizar a tarefa incluem o selenium e o webdriver_manager. Sendo compatível com Selenium 4, é necessário criar uma instância de service, não somente passar o PATH do executável do driver (por exemplo, chromedriver) como argumento para a função webdriver.Chrome. Foi escolhido o Chrome para realizar a tarefa. Na primeira execução, o código instala com driver.
