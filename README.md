@@ -69,7 +69,28 @@ Nesse primeiro gráfico é possível visualizar que cerca de 28% dos perfis anal
 
 ![plot1_2](graphs/plot1_2.png)
 
-Nesse segund gráfico é possível visualizar que cerca de 28% dos perfis analisados são de pessoas que falam algum nível de inglês, seguido de 5% de espanhol e 3% e 2% para Alemão e Francês, respectivamente. Isso mostra que a lingua ingles é predominante na amostra observada.
+Nesse segundo gráfico é possível visualizar que a maioria das pessoas que falam inglês estão no nível intermediário. É interessante observar que existe quase a mesma quantidade de pessoas que tem nível básico, nível básica a intermediário ou fluente e nativo. Algumas outras análises seriam interessantes de se fazer um aprofundamento futuro como estimar quantas pessoas estariam aptas a exercer serviços para empresas de outros países baseado no nível do idioma que falam. 
+
+### Competência
+
+![plot2](graphs/plot2.png)
+
+Nesse gráfico é possível visualizar que a forte tendência de aumento de procura que a área de programação está mostrando. Os pacotes Office estão em primeiro lugar muito porque quase todos os profissionais fazem uso dessa ferramente, independentemente da área de trabalho. Depois deles, é possível ver linguagens de programação como Java, JavaScript, SQL, HTML, MySQL, Git, Linux, PHP, CSS, Python, SQL Server. Uma proposta de análise é observar quais dessas competências têm mais pessoas que fizeram os testes de competência do LinkedIn, ou têm certificação ou recomendação associadas.
+
+### Interesse
+
+![plot3](graphs/plot3.png)
+
+Esse gráfico reforça o que já foi inicialmente constatado no anterior: o aumento da procura e de profissionais na área de programação. No topo da lista podemos ver as Big Techs como Amazon, Google, Microsoft e IBM.
+
+### Experiência
+
+![plot4](graphs/plot4.png)
+
+Esse último gráfico plota a quantidade de pessoas empregadas ao longo do tempo. O objetivo é analisar o comportamento desse parâmetro antes, durante e depois da pandemia. Antes de 2020 (início da pandemia), a quantidade de pessoas empregadas oscilava um pouco mas no geral se mantinha num patamar um pouco baixo. A partir de 2020, houve um crescimento significativo nesse parâmetro, com seu pico já no fim de 2020. Em 2021 ele oscilou mas se manteve constante em valores alto. Somente em 2022 o valor voltou a diminuir, atingindo valores muito baixos (para o período analisado) no início de 2023.
+
+Considerando que uma boa parte das pessoas que estão no LinkedIn são da área de programação (o que pode ser corroborado pelos gráficos anteriores), o aumento da quantidade de empregos na pandemia pode ser explicada pela grande oferta de vagas como programador trabalhando de forma remota oferecida durante a pandemia. Foi exatamente nessa época que a procura por esses profissionais cresceu rapidamente. Seguindo a mesma linha, houve queda nesse parâmetro nos últimos meses o que talvez possa ser explicado pela recente onda de *layoff* nas empresas de tecnologia. Apesar disso, para comprovar essas hipóteses, seria necessária uma análise muito mais ampla (utilizando outros dados) e muito mais aprofundada.
 
 
-
+## Conclusões
+O projeto gerou resultados concretos de análises baseadas em dados da plataforma LinkedIn. Outros *insights* interessantes pode seguir de uma análise mais aprofundada sobre esses dados.
