@@ -63,8 +63,13 @@ Como resultados foram gerados 5 gráficos: dois que dizem respeito aos idiomas, 
 
 ### Idioma
 
-![ola](graphs/plot1_1.png)
+![plot1_1](graphs/plot1_1.png)
 
+Nesse primeiro gráfico é possível visualizar que cerca de 28% dos perfis analisados são de pessoas que falam algum nível de inglês, seguido de 5% de espanhol e 3% e 2% para Alemão e Francês, respectivamente. Isso mostra que a lingua ingles é predominante na amostra observada.
+
+![plot1_2](graphs/plot1_2.png)
+
+Nesse segund gráfico é possível visualizar que cerca de 28% dos perfis analisados são de pessoas que falam algum nível de inglês, seguido de 5% de espanhol e 3% e 2% para Alemão e Francês, respectivamente. Isso mostra que a lingua ingles é predominante na amostra observada.
 
 
 
