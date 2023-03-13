@@ -10,7 +10,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 from config import LINKEDIN_LOGIN, LINKEDIN_PASSWORD
 
-DATABASE_PATH = "db/linkedin_scraping.sqlite3"
+DATABASE_PATH = "data/linkedin_scraping.sqlite3"
 
 
 def create_connection(path_to_file: str) -> sqlite3.Connection:
