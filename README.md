@@ -59,6 +59,11 @@ Isso porque depois de acessar cerca de 150 perfis buscando esses dados, a plataf
 
 ## Resultados
 
+Como resultados foram gerados 5 gráficos: dois que dizem respeito aos idiomas, e um para (cada) competência, interesses e experiência.
+
+### Idioma
+
+![ola](graphs/plot1_1.png)
 
 
 
