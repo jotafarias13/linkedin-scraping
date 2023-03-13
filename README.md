@@ -33,6 +33,14 @@ LINKEDIN_PASSWORD = "senha"
 pip install -r requirements.txt
 ```
 
+3. Executar o arquivo ```create_db.py``` para que o banco de dados seja criado. O banco será criado no path ```DATABASE_PATH```. Caso queira criá-lo em outro local, basta alterar o valor dessa variável em ```utils.py```.
+
+4. Executar o arquivo ```fetch_profile_urls.py``` para que os perfis sejam identificados e salvos na tabela de usuários do banco.
+
+5. Executar o arquivo ```fetch_profile_data.py``` para que os dados de cada perfil sejam minerados. Nesta etapa é preciso ter atenção em relação ao repititivo acesso ao servidor do LinkedIn para que você não perca o acesso a sua conta.
+
+6. Executar o arquivo ```graphs.py``` para que os gráficos sejam gerados. Eles serão colocados no diretório ```graphs```.
+
 
 
 
